@@ -5,9 +5,9 @@ Udacity Data Science Nanodegree capstone project - Starbucks marketing problem
 
 ## Installation
 Several libraries are used in the code file and should be pip install first (if not already):
-numpy
-pandas 
-sklearn
+- numpy
+- pandas 
+- sklearn
 pickle
 json
 plotly
@@ -21,15 +21,17 @@ os
 ## Instruction
 Input data are included in the data folder:
 portfolio.json - offer description
+
 profile.json - customer(user) information including gender,age,membership history and income
+
 transcript.json - customer(user) transaction and offer interaction records
 
 To see the model training process (including data import/analysis/cleaning) and get the model pickle file:
-go to the "Starbucks_Capstone.ipynb" file
+- go to the "Starbucks_Capstone.ipynb" file
 
 To run the web app for offer recommendation:
-go to the "app" folder and run python run.py in command line
-go to http://0.0.0.0:3001/
+- go to the "app" folder and run python run.py in command line
+- go to http://0.0.0.0:3001/
 
 
 ## Overview
