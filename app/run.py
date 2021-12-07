@@ -99,15 +99,15 @@ def index():
     Y_pred = np.zeros((1,len(clf_nb.estimators_)))
     
     for i,clf in enumerate(clf_sgd.estimators_):
-        if i in [3,4]:
+        if i in [3,4,9]:
             Y_pred[:,i] = clf.predict(X)
-            
+
     for i,clf in enumerate(clf_rf.estimators_):
-        if i in [2,7]:
+        if i in []:
             Y_pred[:,i] = clf.predict(X)
             
     for i,clf in enumerate(clf_nb.estimators_):
-        if i in [0,1,5,6,8,9]:
+        if i not in [3,4,9]:
             Y_pred[:,i] = clf.predict(X)
    
     # a list of offer info to be shown in the output table
