@@ -59,12 +59,11 @@ With the model input/output defined, I further use FunkSVD to extrapolate unknow
 ## Conclusion/Summary
 In this work, I took a modeling approach to achieve the goal of predicting who should receive each type of offers. I frist create a user response dataframe by defining what "positive response" means for each type of offer. Then I define my user features as age group, membership history group, gender group, income group and train a few classfiers on my training set data. I also used FunkSVD method to fill in all the missing data for the user-offer interaction matrix. Note that this is just for improving model training and does not affect the integrity and validity of model evaluation, as it is not done for the test set data.
 
-Multinominal NB classifier is found to perform well for most offer types, but Random Forest classifier outperforms it for offer type 4. Therefore, a combined-model classifier is used to make predictions for all offer types. Combining the two classifiers, the test set F1 score is:
-- 0.8-0.84 for offer 2,5,6
-- 0.7-0.8 for offer 0,1,7,8
-- 0.64 for offer 9
-- 0.59 for offer 3
-- 0.48 for offer 4
+Multinominal NB classifier is found to perform well for most offer types, but LinearSVM with SGD learning outperforms it for offer type 3, 4. Therefore, a combined-model classifier is used to make predictions for all offer types. Combining the two classifiers, the test set F1 score is:
+- 0.83-0.84 for offer 5,6
+- 0.7-0.8 for offer 0,1,2,7,8
+- 0.67-0.68 for offer 3,9
+- 0.52 for offer 4
 
 For any user in our database with features(age, member_since, gender, income) available, we can simply decide which offer to send based on the model prediction (1-send, 0-do not send)
 

@@ -14,7 +14,7 @@ app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-clf_rf = joblib.load("../models/clf_rf.pkl")
+clf_sgd = joblib.load("../models/clf_sgd.pkl")
 clf_nb = joblib.load("../models/clf_nb.pkl")
 
 class Form(FlaskForm):    
@@ -98,13 +98,13 @@ def index():
     Y_pred = np.zeros((1,len(clf_nb.estimators_)))
     
     # use random forest classifier for predicting offer 4 
-    for i,clf in enumerate(clf_rf.estimators_):
-        if i == 4:
-            Y_pred[:,4] = clf.predict(X)
+    for i,clf in enumerate(clf_sgd.estimators_):
+        if i in [3,4]:
+            Y_pred[:,i] = clf.predict(X)
 
     # use naive bayes classifier for all the rest offer types
     for i,clf in enumerate(clf_nb.estimators_):
-        if i != 4:
+        if i not in [3,4]:
             Y_pred[:,i] = clf.predict(X)
    
     # a list of offer info to be shown in the output table
