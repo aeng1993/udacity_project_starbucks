@@ -16,6 +16,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 clf_sgd = joblib.load("../models/clf_sgd.pkl")
 clf_nb = joblib.load("../models/clf_nb.pkl")
+clf_rf = joblib.load("../models/clf_rf.pkl")
 
 class Form(FlaskForm):    
     
@@ -97,14 +98,16 @@ def index():
     # initialize an empty numpy array for output
     Y_pred = np.zeros((1,len(clf_nb.estimators_)))
     
-    # use random forest classifier for predicting offer 4 
     for i,clf in enumerate(clf_sgd.estimators_):
         if i in [3,4]:
             Y_pred[:,i] = clf.predict(X)
-
-    # use naive bayes classifier for all the rest offer types
+            
+    for i,clf in enumerate(clf_rf.estimators_):
+        if i in [2,7]:
+            Y_pred[:,i] = clf.predict(X)
+            
     for i,clf in enumerate(clf_nb.estimators_):
-        if i not in [3,4]:
+        if i in [0,1,5,6,8,9]:
             Y_pred[:,i] = clf.predict(X)
    
     # a list of offer info to be shown in the output table
